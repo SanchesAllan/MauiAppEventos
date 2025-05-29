@@ -1,0 +1,50 @@
+ 
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiAppEventos.ViewModels"
+             x:Class="MauiAppEventos.Views.CadastroEventoPage"
+             Title="Cadastro de Evento"
+             BackgroundColor="DarkGreen">
+
+    <ContentPage.BindingContext>
+        <vm:EventoViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="12">
+
+            <Label Text="Nome do Evento:" TextColor="White" FontAttributes="Bold" />
+            <Entry Text="{Binding Evento.Nome}" Placeholder="Digite o nome" PlaceholderColor="LightGray" TextColor="White" />
+
+            <Label Text="Data de Início:" TextColor="White" FontAttributes="Bold" />
+            <DatePicker x:Name="dpInicio"
+                        TextColor="White"
+                        MinimumDate="{x:Static sys:DateTime.Today}"
+                        Date="{Binding Evento.DataInicio}" />
+
+            <Label Text="Data de Término:" TextColor="White" FontAttributes="Bold" />
+            <DatePicker x:Name="dpFim"
+                        TextColor="White"
+                        MinimumDate="{x:Static sys:DateTime.Today}"
+                        Date="{Binding Evento.DataTermino}" />
+
+            <Label Text="Número de Participantes:" TextColor="White" FontAttributes="Bold" />
+            <Entry Text="{Binding Evento.NumeroParticipantes}" Keyboard="Numeric" Placeholder="Ex: 100" PlaceholderColor="LightGray" TextColor="White" />
+
+            <Label Text="Local do Evento:" TextColor="White" FontAttributes="Bold" />
+            <Entry Text="{Binding Evento.Local}" Placeholder="Digite o local" PlaceholderColor="LightGray" TextColor="White" />
+
+            <Label Text="Custo por Participante (R$):" TextColor="White" FontAttributes="Bold" />
+            <Entry Text="{Binding Evento.CustoPorParticipante}" Keyboard="Numeric" Placeholder="Ex: 49,90" PlaceholderColor="LightGray" TextColor="White" />
+
+            <Button Text="Cadastrar"
+                    Clicked="OnCadastrarClicked"
+                    BackgroundColor="#004d00"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    Padding="12,6" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
